@@ -185,8 +185,8 @@ def window_animated_line():
         
 if __name__ == '__main__':
     global FPSCLOCK, grid, pixel_size
-
-    if (len(argv) < 2 or len(argv) > 4):
+    
+    if (len(argv) < 1 or len(argv) > 4):
         print(f"Usage: {argv[0]} [-p | --point] <x1-y1> <x2-y2>  dibuja una linea desde el punto <x1-y1> al <x2-y2>")
         print(f"Usage: {argv[0]} [-f | --file] <path>            dibuja un poligono con los puntos del archivo <path>")
         print(f"Usage: {argv[0]} [-a | --animated]               dibuja una linea animada para la demostracion del algortimo")
@@ -200,7 +200,11 @@ if __name__ == '__main__':
 
     color = RED
     pixel_size = 1
-    
+
+    if (len(argv) == 1):
+        window_simple_line((10, 10), (200, 300))
+        sys.exit()
+
     if '-p' in argv or '--point' in argv:
         if len(argv) == 4:
             point1 = tuple(map(int, argv[2].split('-')))
